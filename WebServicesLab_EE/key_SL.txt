@@ -1,0 +1,23 @@
+f89f21a64630451aa054d92e0588a5ef
+
+
+                    <h:commandButton value="Get nearby stops" action="#{StopLocationUIController.navigateFromGeoLocation("#{location.latitude}","#{location.longitude}")}"/>
+
+
+
+api.sl.se/api2/nearbystopsv2?originCoordLat=59.35643&originCoordLong=17.991378&r=2000&key=f89f21a64630451aa054d92e0588a5ef
+
+
+     {
+            "StopLocation": {
+                "id": "A=1@O=Framnäsbacken@X=17989842@Y=59355494@u=0@U=74@L=400150046@",
+                "extId": "400150046",
+                "hasMainMast": true,
+                "mainMastId": "A=1@O=Framnäsbacken (Solna)@X=17989599@Y=59355512@U=74@L=300103477@",
+                "mainMastExtId": "300103477",
+                "name": "Framnäsbacken",
+                "lon": 17.989842,
+                "lat": 59.355494,
+                "weight": 1434,
+                "dist": 135,
+                "products": 8

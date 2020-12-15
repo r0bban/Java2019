@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <center>
+            <c:if test="${empty StopLocationUIController.foundStopLocations}">
+                <h2>Hittade tyärr ingev hållpålatser inom #{StopLocationUIController.searchRadieMeters} från:</h2>
+            </c:if>
+            <c:if test="${not empty StopLocationUIController.foundStopLocations}">
+                <h2>Hållplatser inom #{StopLocationUIController.searchRadieMeters} meter från:</h2>
+            </c:if>
+            <h2>
+                <c:if test="${not empty StopLocationUIController.searchedStreet}">Gata: #{StopLocationUIController.searchedStreet}, </c:if>
+                <c:if test="${not empty StopLocationUIController.searchedNeighborhood}">Område: #{StopLocationUIController.searchedNeighborhood}, </c:if>
+                <c:if test="${not empty StopLocationUIController.searchedCity}">Stad: #{StopLocationUIController.searchedCity}, </c:if>
+                <c:if test="${not empty StopLocationUIController.searchedPostalCode}">Postkod: #{StopLocationUIController.searchedPostalCode}, </c:if>
+                <c:if test="${not empty StopLocationUIController.searchedCounty}">Län: #{StopLocationUIController.searchedCounty}</c:if>
+            </h2>
+            <c:if test="${empty StopLocationUIController.foundStopLocations}">
+                <h2>Vänligen sök på plats där SL opererar.</h2>
+            </c:if>
+
+            <p:dataTable value="#{StopLocationUIController.foundStopLocations}" var="StopLocation" style="column-width: auto" rendered="#{not empty StopLocationUIController.foundStopLocations}">
+                <p:column>
+                    <f:facet name = "header">Hållplats</f:facet>
+                    #{StopLocation.name}</p:column>
+                <p:column>
+                    <f:facet name = "header">Avstånd (meter)</f:facet>
+                    #{StopLocation.dist}</p:column>
+            </p:dataTable>
+            <br>
+                <h:form>
+                    <p:commandButton value="Tillbaka till platser" immediate="true" action="serachLocation"/>
+                </h:form>
+            </br>
+        </center>
+
+    </h:body>
+</html>
+
